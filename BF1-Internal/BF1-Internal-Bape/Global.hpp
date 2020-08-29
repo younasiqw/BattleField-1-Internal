@@ -12,8 +12,19 @@
 class Global
 {
 public:
+	/* General */
 	bool is_menu_open = true;
-	ImColor c_cross_hair = ImColor(1.0f, 0.0f, 0.0f);
+	
+	/* Aim */
+
+	/* Visuals */
+	bool visuals_playeresp = true;
+
+	/* Misc. */
+	bool misc_crosshair = true;
+
+	/* Colors */
+	ImColor c_cross_hair = ImColor(1.0f, 1.0f, 1.0f);
 };
 
 extern Global* global;

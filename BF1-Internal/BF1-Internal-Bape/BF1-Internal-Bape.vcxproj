@@ -187,6 +187,7 @@
     <ClCompile Include="Vendors\MinHook\trampoline.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Drawing\Font.hpp" />
     <ClInclude Include="Drawing\Functions\Draw.hpp" />
     <ClInclude Include="Drawing\Menu\Menu.hpp" />
     <ClInclude Include="Drawing\Visuals\Visuals.hpp" />

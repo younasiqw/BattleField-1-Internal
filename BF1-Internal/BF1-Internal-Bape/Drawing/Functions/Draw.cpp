@@ -131,9 +131,20 @@ void Draw::XCrossHair(ImColor col)
 	/* Create a pos vector (( Center of the screen )) */
 	ImVec2 center = ImVec2(GetSystemMetrics(SM_CXSCREEN) / 2, GetSystemMetrics(SM_CYSCREEN) / 2);
 
-	/* Draw cross hair */
-	this->Line(ImVec2(center.x, center.y - 6), ImVec2(center.x, center.y + 6), col, 1, NONE);
-	this->Line(ImVec2(center.x + 6, center.y), ImVec2(center.x - 6, center.y), col, 1, NONE);
+	/* Draw crosshair outline -- yes, drawrect would save 4 lines here, idc nigger */
+	ImColor outlinecol = ImColor(0.0f, 0.0f, 0.0f);
+	/* HORIZONTAL */
+	this->Line(ImVec2(center.x - 6, center.y - 1), ImVec2(center.x + 5, center.y - 1), outlinecol, 1, NONE);
+	this->Line(ImVec2(center.x - 6, center.y), ImVec2(center.x + 5, center.y), outlinecol, 1, NONE);
+	this->Line(ImVec2(center.x - 6, center.y + 1), ImVec2(center.x + 5, center.y + 1), outlinecol, 1, NONE);
+	/* VERTICAL */
+	this->Line(ImVec2(center.x - 2, center.y - 5), ImVec2(center.x - 2, center.y + 6), outlinecol, 1, NONE);
+	this->Line(ImVec2(center.x - 1, center.y - 5), ImVec2(center.x - 1, center.y + 6), outlinecol, 1, NONE);
+	this->Line(ImVec2(center.x, center.y - 5), ImVec2(center.x , center.y + 6), outlinecol, 1, NONE);
+
+	/* Draw crosshair */
+	this->Line(ImVec2(center.x - 5, center.y), ImVec2(center.x + 4, center.y), col, 1, NONE); // horizontal
+	this->Line(ImVec2(center.x - 1, center.y - 4), ImVec2(center.x - 1, center.y + 5), col, 1, NONE); // vertical
 }
 
 void Draw::Rectangle3D(Vec3 location, ImColor col) {

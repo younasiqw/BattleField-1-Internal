@@ -30,8 +30,12 @@ namespace Visual
 
 		/* This is the drawing scope just to keep shit looking clean */
 		{
-			/* Draw an initial cross hair (( Mainly for debugging but also why not )) */
-			draw->XCrossHair(global->c_cross_hair);
+			/* Draw an initial cross hair (( Mainly for debugging but also why not )) -- Added check */
+			if (global->misc_crosshair)
+				draw->XCrossHair(global->c_cross_hair);
+
+			/* Return if playeresp is disabled to avoid calcing and drawing all this shit */
+			if (!global->visuals_playeresp) return;
 
 			/* Attempt to get the local player instance */
 			ClientPlayer* local_player = GetLocalPlayer();

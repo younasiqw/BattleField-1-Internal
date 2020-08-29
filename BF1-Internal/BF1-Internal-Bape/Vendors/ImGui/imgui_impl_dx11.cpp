@@ -27,6 +27,7 @@
 
 #include "imgui.h"
 #include "imgui_impl_dx11.h"
+#include "../../Drawing/Font.hpp"
 
 // DirectX
 #include <stdio.h>
@@ -340,6 +341,14 @@ static void ImGui_ImplDX11_CreateFontsTexture()
 
 bool    ImGui_ImplDX11_CreateDeviceObjects()
 {
+    /* Load custom font from byte array in /Drawing/Font.hpp */
+    ImGuiIO& io = ImGui::GetIO();
+    ImFontConfig config;
+    config.OversampleH = 2;
+    config.OversampleV = 2;
+    config.GlyphExtraSpacing = { 1.0f, 0.0f };
+    ImFont* font0 = io.Fonts->AddFontFromMemoryTTF(rawFont, sizeof(rawFont), 14.0f);
+
     if (!g_pd3dDevice)
         return false;
     if (g_pFontSampler)
