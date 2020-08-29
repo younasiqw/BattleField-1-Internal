@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{32f7f77c-b8cf-46fb-a88c-73c5bd6d11ac}</ProjectGuid>
+    <RootNamespace>BF1InternalBape</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;BF1INTERNALBAPE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;BF1INTERNALBAPE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;BF1INTERNALBAPE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;BF1INTERNALBAPE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Drawing\Menu\Menu.cpp" />
+    <ClCompile Include="Global.cpp" />
+    <ClCompile Include="Hooks\DirectX 11 Hook\DXHook.cpp" />
+    <ClCompile Include="Math\GameMath.cpp" />
+    <ClCompile Include="Math\Math.cpp" />
+    <ClCompile Include="Math\Matrix3x4.cpp" />
+    <ClCompile Include="Math\Matrix4x4.cpp" />
+    <ClCompile Include="Math\Vec2.cpp" />
+    <ClCompile Include="Math\Vec3.cpp" />
+    <ClCompile Include="Math\Vec4.cpp" />
+    <ClCompile Include="Utility\Console\Console.cpp" />
+    <ClCompile Include="Utility\Discord RPC\Discord.cpp" />
+    <ClCompile Include="Utility\Discord RPC\Discord\connection_win.cpp" />
+    <ClCompile Include="Utility\Discord RPC\Discord\discord_register_win.cpp" />
+    <ClCompile Include="Utility\Discord RPC\Discord\discord_rpc.cpp" />
+    <ClCompile Include="Utility\Discord RPC\Discord\rpc_connection.cpp" />
+    <ClCompile Include="Utility\Discord RPC\Discord\serialization.cpp" />
+    <ClCompile Include="Vendors\ImGui\imgui.cpp" />
+    <ClCompile Include="Vendors\ImGui\imgui_demo.cpp" />
+    <ClCompile Include="Vendors\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="Vendors\ImGui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="Vendors\ImGui\imgui_impl_win32.cpp" />
+    <ClCompile Include="Vendors\ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="Vendors\Kiero\kiero.cpp" />
+    <ClCompile Include="Vendors\MinHook\buffer.c" />
+    <ClCompile Include="Vendors\MinHook\hde\hde32.c" />
+    <ClCompile Include="Vendors\MinHook\hde\hde64.c" />
+    <ClCompile Include="Vendors\MinHook\hook.c" />
+    <ClCompile Include="Vendors\MinHook\trampoline.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Drawing\Menu\Menu.hpp" />
+    <ClInclude Include="Global.hpp" />
+    <ClInclude Include="Hooks\DirectX 11 Hook\DXHook.hpp" />
+    <ClInclude Include="Math\GameMath.hpp" />
+    <ClInclude Include="Math\Math.hpp" />
+    <ClInclude Include="Math\Matrix3x4.hpp" />
+    <ClInclude Include="Math\Matrix4x4.hpp" />
+    <ClInclude Include="Math\Vec2.hpp" />
+    <ClInclude Include="Math\Vec3.hpp" />
+    <ClInclude Include="Math\Vec4.hpp" />
+    <ClInclude Include="Utility\Console\Console.hpp" />
+    <ClInclude Include="Utility\Discord RPC\Discord.hpp" />
+    <ClInclude Include="Utility\Discord RPC\Discord\backoff.h" />
+    <ClInclude Include="Utility\Discord RPC\Discord\connection.h" />
+    <ClInclude Include="Utility\Discord RPC\Discord\discord_register.h" />
+    <ClInclude Include="Utility\Discord RPC\Discord\discord_rpc.h" />
+    <ClInclude Include="Utility\Discord RPC\Discord\msg_queue.h" />
+    <ClInclude Include="Utility\Discord RPC\Discord\rpc_connection.h" />
+    <ClInclude Include="Utility\Discord RPC\Discord\serialization.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\allocators.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\cursorstreamwrapper.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\document.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\encodedstream.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\encodings.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\error\en.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\error\error.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\filereadstream.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\filewritestream.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\fwd.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\internal\biginteger.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\internal\clzll.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\internal\diyfp.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\internal\dtoa.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\internal\ieee754.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\internal\itoa.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\internal\meta.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\internal\pow10.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\internal\regex.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\internal\stack.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\internal\strfunc.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\internal\strtod.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\internal\swap.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\istreamwrapper.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\memorybuffer.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\memorystream.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\msinttypes\inttypes.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\msinttypes\stdint.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\ostreamwrapper.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\pointer.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\prettywriter.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\rapidjson.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\reader.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\schema.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\stream.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\stringbuffer.h" />
+    <ClInclude Include="Utility\Discord RPC\rapidjson\writer.h" />
+    <ClInclude Include="Utility\Logging\Logging.hpp" />
+    <ClInclude Include="Vendors\ImGui\imconfig.h" />
+    <ClInclude Include="Vendors\ImGui\imgui.h" />
+    <ClInclude Include="Vendors\ImGui\imgui_impl_dx11.h" />
+    <ClInclude Include="Vendors\ImGui\imgui_impl_win32.h" />
+    <ClInclude Include="Vendors\ImGui\imgui_internal.h" />
+    <ClInclude Include="Vendors\ImGui\imstb_rectpack.h" />
+    <ClInclude Include="Vendors\ImGui\imstb_textedit.h" />
+    <ClInclude Include="Vendors\ImGui\imstb_truetype.h" />
+    <ClInclude Include="Vendors\Kiero\kiero.h" />
+    <ClInclude Include="Vendors\MinHook\buffer.h" />
+    <ClInclude Include="Vendors\MinHook\hde\hde32.h" />
+    <ClInclude Include="Vendors\MinHook\hde\hde64.h" />
+    <ClInclude Include="Vendors\MinHook\hde\pstdint.h" />
+    <ClInclude Include="Vendors\MinHook\hde\table32.h" />
+    <ClInclude Include="Vendors\MinHook\hde\table64.h" />
+    <ClInclude Include="Vendors\MinHook\MinHook.h" />
+    <ClInclude Include="Vendors\MinHook\trampoline.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
