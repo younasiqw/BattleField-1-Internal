@@ -9,7 +9,7 @@
 #include "../../Vendors/ImGui/imgui_impl_dx11.h"
 #include "../../Vendors/ImGui/imgui_impl_win32.h"
 #include "../../Global.hpp"
-
+#include "../../Utility/Logging/Logging.hpp"
 #include "../../Vendors/Kiero/kiero.h"
 
 /*
@@ -101,13 +101,13 @@ HRESULT __stdcall HKPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 bool DXHook::Init(std::vector<std::function<void()>> tasks)
 {
 	/* Log the initiation */
-	printf("[i] Attempting to hook present\n");
+	Log::Initialize("Present Hook");
 
 	/* Initialize D3D11 using kiero */
 	if (kiero::init(kiero::RenderType::D3D11) == kiero::Status::Success)
 	{
 		/* Log the success */
-		printf("[i] Kiero initiation was successful\n");
+		Log::Success("Kiero Init complete");
 
 		/* Bind the HKPresent with kiero */
 		kiero::bind(8, (void**)&this->o_present, HKPresent);
@@ -120,7 +120,7 @@ bool DXHook::Init(std::vector<std::function<void()>> tasks)
 	else
 	{
 		/* Log the failure */
-		printf("[!] Something went wrong\n");
+		Log::Error("Something went wrong");
 	}
 
 	return false;

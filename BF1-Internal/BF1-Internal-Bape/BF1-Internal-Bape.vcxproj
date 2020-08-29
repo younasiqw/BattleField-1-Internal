@@ -153,7 +153,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Drawing\Functions\Draw.cpp" />
     <ClCompile Include="Drawing\Menu\Menu.cpp" />
+    <ClCompile Include="Drawing\Visuals\Visuals.cpp" />
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="Hooks\DirectX 11 Hook\DXHook.cpp" />
     <ClCompile Include="Math\GameMath.cpp" />
@@ -163,6 +165,7 @@
     <ClCompile Include="Math\Vec2.cpp" />
     <ClCompile Include="Math\Vec3.cpp" />
     <ClCompile Include="Math\Vec4.cpp" />
+    <ClCompile Include="SDK\sdk.cpp" />
     <ClCompile Include="Utility\Console\Console.cpp" />
     <ClCompile Include="Utility\Discord RPC\Discord.cpp" />
     <ClCompile Include="Utility\Discord RPC\Discord\connection_win.cpp" />
@@ -184,7 +187,9 @@
     <ClCompile Include="Vendors\MinHook\trampoline.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Drawing\Functions\Draw.hpp" />
     <ClInclude Include="Drawing\Menu\Menu.hpp" />
+    <ClInclude Include="Drawing\Visuals\Visuals.hpp" />
     <ClInclude Include="Global.hpp" />
     <ClInclude Include="Hooks\DirectX 11 Hook\DXHook.hpp" />
     <ClInclude Include="Math\GameMath.hpp" />
@@ -194,6 +199,8 @@
     <ClInclude Include="Math\Vec2.hpp" />
     <ClInclude Include="Math\Vec3.hpp" />
     <ClInclude Include="Math\Vec4.hpp" />
+    <ClInclude Include="SDK\FrostBite.hpp" />
+    <ClInclude Include="SDK\sdk.hpp" />
     <ClInclude Include="Utility\Console\Console.hpp" />
     <ClInclude Include="Utility\Discord RPC\Discord.hpp" />
     <ClInclude Include="Utility\Discord RPC\Discord\backoff.h" />

@@ -6,12 +6,15 @@
 #include <windows.h>
 #include <vector>
 #include <functional>
+#include <chrono>
 
 #include "Utility/Console/Console.hpp"
 #include "Utility/Logging/Logging.hpp"
 #include "Hooks/DirectX 11 Hook/DXHook.hpp"
 #include "Drawing/Menu/Menu.hpp"
+#include "Drawing/Visuals/Visuals.hpp"
 #include "Global.hpp"
+#include "Utility/Discord RPC/Discord.hpp"
 
 /*
 * Main thread for this binary, bootstrapped off the API entry point
@@ -25,10 +28,31 @@ inline void Main(HMODULE hModule)
 	/* Log the creation of the console window */
 	Log::Success("Console Allocated");
 
+	/* Log the change in discord Status */
+	Log::Initialize("Discord RPC");
+
+	/* Initialize discord RPC inside a scope because thats hot */
+	{
+		/* Create an instance of the discordRPC class */
+		DiscordRPC discord_rpc;
+
+		/* Initialize the discord RPC with an api key */
+		discord_rpc.Init("749153609035415583");
+
+		/* Declear the RPC information */
+		DiscordRichPresence rpc;
+		rpc.state = "BF1 Internal";
+		rpc.startTimestamp = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+		rpc.endTimestamp = NULL;	
+		rpc.largeImageKey = "bf1guy";
+		rpc.largeImageText = "Bape Internal";
+		discord_rpc.Update(&rpc);
+	}
+
 	/* Initialize the present hook */
 	{
 		/* Populate this with drawing tasks */
-		std::vector<std::function<void()>> task_list = {Menu::Draw};
+		std::vector<std::function<void()>> task_list = { Visual::Draw, Menu::Draw };
 
 		/* Init the present hook */
 		dx_hook->Init(task_list);
@@ -43,6 +67,7 @@ inline void Main(HMODULE hModule)
 		/* Toggle menu status */
 		if (GetAsyncKeyState(VK_F9) & 0x8000)
 		{
+			/* Toggle the menu */
 			global->is_menu_open = !global->is_menu_open;
 
 			/* Prevent spam */
