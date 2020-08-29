@@ -9,6 +9,8 @@
 #include <Windows.h>
 #include <string>
 #include "../../Vendors/ImGui/imgui.h"
+#include "../../Math/Vec3.hpp"
+#include "../../SDK/sdk.hpp"
 
 /* Flags containing different drawing styles that can be specified */
 enum DrawFlags
@@ -29,6 +31,7 @@ public:
 	void Line(ImVec2 pt, ImVec2 pb, ImColor col, int thickness, DrawFlags flags);
 	void Text(ImVec2 pos, ImColor col, std::string str, DrawFlags flags);
 	void XCrossHair(ImColor col);
+	void Rectangle3D(Vec3 location, ImColor col);
 };
 
 extern Draw* draw;

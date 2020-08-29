@@ -10,6 +10,7 @@
 #include "../../Vendors/ImGui/imgui_internal.h"
 #include "../../SDK/sdk.hpp"
 #include "../../SDK/FrostBite.hpp"
+#include <ctime>
 
 namespace Visual
 {
@@ -35,6 +36,28 @@ namespace Visual
 			/* Attempt to get the local player instance */
 			ClientPlayer* local_player = GetLocalPlayer();
 
+			std::string name = local_player->name;
+
+			/* get localtime */
+			time_t curr_time;
+			curr_time = time(NULL);
+
+			tm* tm_local = localtime(&curr_time);
+
+			/* buffers */
+			char timeBuffer[64];
+			char hello[64];
+			char module[32];
+
+			/* write to buffer */
+		    sprintf(timeBuffer, "%i:%i:%i", tm_local->tm_hour, tm_local->tm_min, tm_local->tm_sec);
+			sprintf(hello, "Hello %s, Build date: %s, %s", name, __TIME__, __DATE__);
+			sprintf(module, "Base: 0x%x", GetModuleHandle(NULL));
+
+			draw->Text(ImVec2(20, 20), ImColor(1.0f, 1.0f, 1.0f, 1.0f), "BF1 Internal - Bape - x64: " + std::string(timeBuffer), NONE);
+			draw->Text(ImVec2(20, 35), ImColor(1.0f, 1.0f, 1.0f, 1.0f), std::string(hello), NONE);
+			draw->Text(ImVec2(20, 50), ImColor(1.0f, 1.0f, 1.0f, 1.0f), std::string(module), NONE);
+
 			/* Check that local player is valid */
 			if (!IsValidPtr(local_player)) return;
 
@@ -45,7 +68,7 @@ namespace Visual
 			if (!IsValidPtr(local_soldier)) return;
 
 			/* Walk the entirety of the player list */
-			for (int i = 0; i < 64; i++)
+			for (int i = 0; i <= 64; i++)
 			{
 				/* Get this iterations player */
 				ClientPlayer* player = GetPlayerById(i);
@@ -80,6 +103,9 @@ namespace Visual
 				sprintf(lower_buffer, "[%s]", player->name);
 
 				draw->Text(ToImVec2(base_screen), ImColor(1.0f, 0.0f, 0.0f), lower_buffer, CENTERED);
+
+				/* draw skeleton */
+				DrawSkeleton(soldier, ImVec4(1.0f, 0.0f, 0.0f, 1.0f));
 			}
 		}
 

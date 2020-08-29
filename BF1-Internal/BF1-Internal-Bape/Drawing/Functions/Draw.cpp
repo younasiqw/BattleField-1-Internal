@@ -136,4 +136,8 @@ void Draw::XCrossHair(ImColor col)
 	this->Line(ImVec2(center.x + 6, center.y), ImVec2(center.x - 6, center.y), col, 1, NONE);
 }
 
+void Draw::Rectangle3D(Vec3 location, ImColor col) {
+	/* We need 3 vectors */
+}
+
 Draw* draw = new Draw;
