@@ -350,5 +350,8 @@
     <ClInclude Include="Drawing\Visuals\Visuals.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Drawing\Font.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -16,6 +16,8 @@
 #include "Global.hpp"
 #include "Utility/Discord RPC/Discord.hpp"
 
+bool pressed = false;
+
 /*
 * Main thread for this binary, bootstrapped off the API entry point
 */
@@ -65,13 +67,13 @@ inline void Main(HMODULE hModule)
 		if (GetAsyncKeyState(VK_DELETE) & 0x8000) break;
 
 		/* Toggle menu status */
-		if (GetAsyncKeyState(VK_F9) & 0x8000)
+		pressed = false;
+		while (GetAsyncKeyState(VK_INSERT) & 0x8000)
 		{
-			/* Toggle the menu */
-			global->is_menu_open = !global->is_menu_open;
-
-			/* Prevent spam */
-			SleepEx(35, true);
+			if (!pressed) {
+				global->is_menu_open = !global->is_menu_open;
+				pressed = true;
+			}
 		}
 
 		/* Prevent hot looping */

@@ -11,6 +11,9 @@ namespace Menu
 {
 	void Draw()
 	{
+		/* Return if menu shouldn't be open */
+		if (!global->is_menu_open) return;
+
 		/* Begin this imgui instance */
 		ImGui::Begin("BF1 Internal", &global->is_menu_open);
 
