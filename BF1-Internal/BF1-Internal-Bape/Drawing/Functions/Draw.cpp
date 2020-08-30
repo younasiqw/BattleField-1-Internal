@@ -112,11 +112,16 @@ void Draw::Rectangle(ImVec2 pt, ImVec2 pb, ImColor col, int thickness, float rou
 		window->DrawList->AddRect(pt, pb, ImColor(0.0f, 0.0f, 0.0f, 1.0f), rounding, corner_flags, thickness + 3);
 	}
 
-	/* Distinguish whether the flag specified wanted a solid object */
+	/* Distinguish whether the flag specified wanted a solid or filled object */
 	if (flags & SOLID)
 	{
 		/* Draw the solid rectangle */
 		window->DrawList->AddRectFilled(pt, pb, col, rounding, corner_flags);
+	}
+	else if (flags & FILLED)
+	{
+		/* Draw the solid rectangle */
+		window->DrawList->AddRectFilled(pt, pb, ImColor(0.0f, 0.0f, 0.0f, 0.5f), rounding, corner_flags);
 	}
 	else
 	{

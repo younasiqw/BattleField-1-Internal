@@ -14,9 +14,11 @@ class Global
 public:
 	/* General */
 	bool is_menu_open = true;
+	bool cursor_unlocked = true;
 	
 	/* Aim */
-	bool aimbot = false;
+	bool aim_enabled = false;
+	int aim_key = 0x06;
 
 	/* Visuals */
 	bool visuals = false;

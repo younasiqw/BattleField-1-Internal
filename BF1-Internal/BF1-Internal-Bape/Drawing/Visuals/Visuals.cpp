@@ -127,7 +127,7 @@ namespace Visual
 
 					if (!soldier->occluded) boxColor = global->c_e_visuals_box_visible;
 
-					draw->Rectangle(ImVec2(c1.x + 10, c1.y), ImVec2(c2.x - 10, c2.y), boxColor, 1.0f, 5.0f, NONE, NONE);
+					draw->Rectangle(ImVec2(c1.x + 10, c1.y), ImVec2(c2.x - 10, c2.y), boxColor, 1.0f, 5.0f, NONE, OUTLINE | FILLED);
 				}
 
 				if (global->visuals_healthbar) { /* broken */
@@ -146,7 +146,8 @@ namespace Visual
 					/* Create the lower text */
 					sprintf(lower_buffer, "[%s]", player->name);
 
-					draw->Text(ToImVec2(base_screen), global->c_visuals_info, lower_buffer, CENTERED);
+					draw->Text(ToImVec2(head_screen), global->c_visuals_info, upper_buffer, CENTERED | OUTLINE);
+					draw->Text(ToImVec2(base_screen), global->c_visuals_info, lower_buffer, CENTERED | OUTLINE);
 				}
 
 				if (global->visuals_skeleton) {

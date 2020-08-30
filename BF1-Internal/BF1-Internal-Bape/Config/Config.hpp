@@ -26,7 +26,7 @@ private:
 	*/
 	std::vector<bool> vars = {
 		/* Aim */
-		global->aimbot,
+		global->aim_enabled,
 
 		/* Visuals */
 		global->visuals,

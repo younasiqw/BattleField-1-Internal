@@ -7,6 +7,7 @@
 #include <vector>
 #include <functional>
 #include <chrono>
+#include <thread>
 
 #include "Utility/Console/Console.hpp"
 #include "Utility/Logging/Logging.hpp"
@@ -15,6 +16,7 @@
 #include "Drawing/Visuals/Visuals.hpp"
 #include "Global.hpp"
 #include "Utility/Discord RPC/Discord.hpp"
+#include "Aimbot/Aimbot.hpp"
 
 bool pressed = false;
 
@@ -60,11 +62,17 @@ inline void Main(HMODULE hModule)
 		dx_hook->Init(task_list);
 	}
 
+	/* Create aimbot thread */
+	{
+		std::thread t_aimbot(&Aimbot::Aim);
+		t_aimbot.detach();
+	}
+
 	/* Initiate an infinite loop */
 	while (true)
 	{
 		/* Exit thread if insert is press */
-		if (GetAsyncKeyState(VK_DELETE) & 0x8000) break;
+		if (GetAsyncKeyState(VK_END) & 0x8000) break;
 
 		/* Toggle menu status */
 		pressed = false;
@@ -72,6 +80,7 @@ inline void Main(HMODULE hModule)
 		{
 			if (!pressed) {
 				global->is_menu_open = !global->is_menu_open;
+				global->cursor_unlocked = !global->cursor_unlocked;
 				pressed = true;
 			}
 		}

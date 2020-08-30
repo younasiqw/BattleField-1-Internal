@@ -12,7 +12,7 @@ typedef WORD _WORD;
 typedef DWORD _DWORD;
 typedef QWORD _QWORD;
 
-hashtable_iterator<_QWORD>* __fastcall hashtable_find(hashtable<_QWORD>* table, hashtable_iterator<_QWORD>* iterator, _QWORD key)
+inline hashtable_iterator<_QWORD>* __fastcall hashtable_find(hashtable<_QWORD>* table, hashtable_iterator<_QWORD>* iterator, _QWORD key)
 {
 	unsigned int mnBucketCount = table->mnBucketCount;
 
@@ -41,7 +41,7 @@ hashtable_iterator<_QWORD>* __fastcall hashtable_find(hashtable<_QWORD>* table, 
 	return iterator;
 }
 
-void* DecryptPointer(_QWORD EncryptedPtr, _QWORD PointerKey)
+inline void* DecryptPointer(_QWORD EncryptedPtr, _QWORD PointerKey)
 {
 	_QWORD pObfuscationMgr = *(_QWORD*)OFFSET_OBFUSCATEMGR;
 
@@ -80,7 +80,7 @@ void* DecryptPointer(_QWORD EncryptedPtr, _QWORD PointerKey)
 	return (void*)DecryptedPtr;
 }
 
-ClientPlayer* EncryptedPlayerMgr__GetPlayer(QWORD EncryptedPlayerMgr, int id)
+inline ClientPlayer* EncryptedPlayerMgr__GetPlayer(QWORD EncryptedPlayerMgr, int id)
 {
 	_QWORD XorValue1 = *(_QWORD*)(EncryptedPlayerMgr + 0x20) ^ *(_QWORD*)(EncryptedPlayerMgr + 8);
 	_QWORD XorValue2 = (XorValue1 ^ *(_QWORD*)(EncryptedPlayerMgr + 0x10));
@@ -90,7 +90,7 @@ ClientPlayer* EncryptedPlayerMgr__GetPlayer(QWORD EncryptedPlayerMgr, int id)
 }
 
 /* Implementation for get player by ID */
-ClientPlayer* GetPlayerById(int id)
+inline ClientPlayer* GetPlayerById(int id)
 {
 	ClientGameContext* pClientGameContext = ClientGameContext::GetInstance();
 	if (!IsValidPtr(pClientGameContext)) return nullptr;
@@ -119,7 +119,7 @@ ClientPlayer* GetPlayerById(int id)
 }
 
 /* Implementationf for Get LocalPlayer*/
-ClientPlayer* GetLocalPlayer(void)
+inline ClientPlayer* GetLocalPlayer(void)
 {
 	ClientGameContext* pClientGameContext = ClientGameContext::GetInstance();
 	if (!IsValidPtr(pClientGameContext)) return nullptr;
@@ -148,7 +148,7 @@ ClientPlayer* GetLocalPlayer(void)
 }
 
 /* Implementation for World to screen */
-bool W2S(Vec3 position, Vec2& out)
+inline bool W2S(Vec3 position, Vec2& out)
 {
 	/* Get the game render instance */
 	GameRenderer* game_render = GameRenderer::GetInstance();
@@ -181,7 +181,7 @@ bool W2S(Vec3 position, Vec2& out)
 }
 
 
-float CalculateDistance(Vec3 local_position, Vec3 entity_position)
+inline float CalculateDistance(Vec3 local_position, Vec3 entity_position)
 {
 	float xx = entity_position.x - local_position.x;
 	float yy = entity_position.y - local_position.y;
@@ -189,7 +189,7 @@ float CalculateDistance(Vec3 local_position, Vec3 entity_position)
 	return sqrt(xx * xx + yy * yy + zz * zz);
 }
 
-void ConnectBones(ClientSoldierEntity* entity, UpdatePoseResultData::BONES bone1, UpdatePoseResultData::BONES bone2, ImVec4 col)
+inline void ConnectBones(ClientSoldierEntity* entity, UpdatePoseResultData::BONES bone1, UpdatePoseResultData::BONES bone2, ImVec4 col)
 {
 	/* Check that the entity is valid */
 	if (!entity) return;
@@ -213,7 +213,7 @@ void ConnectBones(ClientSoldierEntity* entity, UpdatePoseResultData::BONES bone1
 	//Draw::Line(ImVec2(bscreen1.x, bscreen1.y), ImVec2(bscreen2.x, bscreen2.y), (ImColor)col, 3);
 }
 
-void DrawSkeleton(ClientSoldierEntity* entity, ImVec4 col)
+inline void DrawSkeleton(ClientSoldierEntity* entity, ImVec4 col)
 {
 	ConnectBones(entity, UpdatePoseResultData::BONE_HEAD, UpdatePoseResultData::BONE_NECK, col);
 	ConnectBones(entity, UpdatePoseResultData::BONE_NECK, UpdatePoseResultData::BONE_SPINE2, col);
