@@ -6,9 +6,12 @@
 #include "Menu.hpp"
 #include "../../Vendors/ImGui/imgui.h"
 #include "../../Global.hpp"
+#include "../../Config/Config.hpp"
 
 namespace Menu
 {
+	Config config;
+
 	int m_CurrentTab = 1;
 
 	void ApplyStyle() {
@@ -109,6 +112,7 @@ namespace Menu
 				break;
 			case 3: /* misc */
 				ImGui::Checkbox("Crosshair", &global->misc_crosshair);
+				//if (ImGui::Button("Save config")) config.write();
 			case 4: /* colors */
 				ImGui::ColorEdit4("Crosshair ", (float*)&global->c_cross_hair);
 				ImGui::ColorEdit4("Boxes team ", (float*)&global->c_t_visuals_box);
