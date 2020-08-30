@@ -590,4 +590,6 @@ public:
 	DWORD m_Type; //0x000C
 };
 
+
+
 #endif // _SDK_HPP

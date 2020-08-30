@@ -101,7 +101,13 @@ namespace Menu
 			}
 			if (m_CurrentTab == 2)
 			{
-				ImGui::Checkbox("Player ESP", &global->visuals_playeresp);
+				ImGui::Checkbox("Visuals ", &global->visuals);
+				ImGui::Checkbox("Boxes ", &global->visuals_box);
+				ImGui::Checkbox("Head circle ", &global->visuals_headcircle);
+				ImGui::Checkbox("Player info ", &global->visuals_info);
+				ImGui::Checkbox("Enemy only ", &global->visuals_enemy_only);
+				ImGui::Checkbox("Skeleton ", &global->visuals_skeleton);
+
 			}
 			if (m_CurrentTab == 3)
 			{

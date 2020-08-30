@@ -61,7 +61,7 @@ void Draw::Line(ImVec2 pt, ImVec2 pb, ImColor col, int thickness, DrawFlags flag
 }
 
 /* Implementation for drawing a circle */
-void Draw::Circle(ImVec2 pos, ImColor col, int radius, int thickness, int segments, DrawFlags flags)
+void Draw::CircleFilled(ImVec2 pos, ImColor col, int radius, int thickness, int segments, DrawFlags flags)
 {
 	/* Check that text is within the bounds of the screen */
 	if ((pos.x <= 0.0 || pos.y <= 0.0) || (pos.x >= GetSystemMetrics(SM_CXSCREEN) || pos.y >= GetSystemMetrics(SM_CYSCREEN)))
@@ -122,6 +122,17 @@ void Draw::Rectangle(ImVec2 pt, ImVec2 pb, ImColor col, int thickness, float rou
 	{
 		/* Draw a rectangle if solid wasnt specified */
 		window->DrawList->AddRect(pt, pb, col, rounding, corner_flags, thickness);
+	}
+}
+
+void Draw::Circle(ImVec2 pos, float points, float radius, ImColor color) {
+	float step = (float)M_PI * 2.0f / points;
+
+	for (float a = 0; a < (M_PI * 2.0f); a += step)
+	{
+		ImVec2 start(radius * cosf(a) + pos.x, radius * sinf(a) + pos.y);
+		ImVec2 end(radius * cosf(a + step) + pos.x, radius * sinf(a + step) + pos.y);
+		Draw::Line(start, end, ImColor(1.0f, 0.0f, 0.0f), 1.0f, NONE);
 	}
 }
 

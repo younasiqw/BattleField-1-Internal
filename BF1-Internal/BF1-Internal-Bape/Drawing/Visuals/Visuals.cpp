@@ -18,6 +18,8 @@ namespace Visual
 	{
 		/* Push a transparent style */
 		ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.0f, 0.0f, 0.0f, 0.0f));
+		/* set the border to 0 resulting in no 1px wide white border */
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
 
 		/* Create the window to be drawn on */
 		ImGui::Begin("Visuals", reinterpret_cast<bool*>(true), ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMouseInputs);
@@ -34,8 +36,6 @@ namespace Visual
 			if (global->misc_crosshair)
 				draw->XCrossHair(global->c_cross_hair);
 
-			/* Return if playeresp is disabled to avoid calcing and drawing all this shit */
-			if (!global->visuals_playeresp) return;
 
 			/* Attempt to get the local player instance */
 			ClientPlayer* local_player = GetLocalPlayer();
@@ -61,6 +61,9 @@ namespace Visual
 			draw->Text(ImVec2(20, 20), ImColor(1.0f, 1.0f, 1.0f, 1.0f), "BF1 Internal - Bape - x64: " + std::string(timeBuffer), NONE);
 			draw->Text(ImVec2(20, 35), ImColor(1.0f, 1.0f, 1.0f, 1.0f), std::string(hello), NONE);
 			draw->Text(ImVec2(20, 50), ImColor(1.0f, 1.0f, 1.0f, 1.0f), std::string(module), NONE);
+
+			/* Return if playeresp is disabled to avoid calcing and drawing all this shit */
+			if (!global->visuals) return;
 
 			/* Check that local player is valid */
 			if (!IsValidPtr(local_player)) return;
@@ -97,19 +100,41 @@ namespace Visual
 				/* World to screen the players head positon */
 				Vec2 head_screen; if (!W2S(soldier->location + Vec3(soldier->GetAABB().max.x, soldier->GetAABB().max.y, soldier->GetAABB().max.z), head_screen)) continue;
 
-				/* Form the information to display */
-				char upper_buffer[128]; char lower_buffer[128];
+				if (global->visuals_enemy_only && team) continue;
 
-				/* Create the upper text */
-				sprintf(upper_buffer, "[%dHP %dM]", (int)soldier->healthcomponent->m_Health, (int)CalculateDistance(local_soldier->location, soldier->location));
+				if (global->visuals_headcircle) {
+					/* convert vec2 to imvec2 */
+					ImVec2 headpos(head_screen.x, head_screen.y);
+					/* draw a circle @ head position */
+					draw->Circle(headpos, 1, 5, ImColor(1.0f, 0.0f, 0.0f));
+				}
 
-				/* Create the lower text */
-				sprintf(lower_buffer, "[%s]", player->name);
+				if (global->visuals_box) {
+					Vec3 location = soldier->location;
+					Vec2 c1; Vec2 c2;
+					W2S(soldier->location + Vec3(soldier->GetAABB().min.x, soldier->GetAABB().min.y, soldier->GetAABB().max.z), c1);
+					W2S(soldier->location + Vec3(soldier->GetAABB().max.x, soldier->GetAABB().max.y, soldier->GetAABB().max.z), c2);
+					draw->Rectangle(ImVec2(c1.x + 10, c1.y), ImVec2(c2.x - 10, c2.y), ImColor(1.0f, 0.0f, 0.0f), 1.0f, 5.0f, NONE, NONE);
+				}
 
-				draw->Text(ToImVec2(base_screen), ImColor(1.0f, 0.0f, 0.0f), lower_buffer, CENTERED);
+				if (global->visuals_info) {
+					/* Form the information to display */
+					char upper_buffer[128]; char lower_buffer[128];
 
-				/* draw skeleton */
-				DrawSkeleton(soldier, ImVec4(1.0f, 0.0f, 0.0f, 1.0f));
+					/* Create the upper text */
+					sprintf(upper_buffer, "[%dHP %dM]", (int)soldier->healthcomponent->m_Health, (int)CalculateDistance(local_soldier->location, soldier->location));
+
+					/* Create the lower text */
+					sprintf(lower_buffer, "[%s]", player->name);
+
+					draw->Text(ToImVec2(base_screen), ImColor(1.0f, 0.0f, 0.0f), lower_buffer, CENTERED);
+				}
+
+				if (global->visuals_skeleton) {
+					/* draw skeleton */
+					DrawSkeleton(soldier, ImVec4(1.0f, 0.0f, 0.0f, 1.0f));
+				}
+
 			}
 		}
 

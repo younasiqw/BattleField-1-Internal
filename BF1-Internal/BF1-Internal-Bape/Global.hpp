@@ -18,7 +18,12 @@ public:
 	/* Aim */
 
 	/* Visuals */
-	bool visuals_playeresp = true;
+	bool visuals = false;
+	bool visuals_box = false;
+	bool visuals_enemy_only = true;
+	bool visuals_skeleton = false;
+	bool visuals_headcircle = false;
+	bool visuals_info = false;
 
 	/* Misc. */
 	bool misc_crosshair = true;
