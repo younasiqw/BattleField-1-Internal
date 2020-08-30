@@ -96,7 +96,7 @@ namespace Menu
 
 			ImGui::Separator();
 
-			Config config;
+			//Config config;
 
 			switch (m_CurrentTab) {
 			case 1: /* aimbot */
@@ -113,7 +113,7 @@ namespace Menu
 				break;
 			case 3: /* misc */
 				ImGui::Checkbox("Crosshair", &global->misc_crosshair);
-				if (ImGui::Button("Save config")) config.write();/*std::thread configThread(&Config::write, Config())*/
+				//if (ImGui::Button("Save config")) config.write();/*std::thread configThread(&Config::write, Config())*/
 				break;
 			case 4: /* colors */
 				ImGui::ColorEdit4("Crosshair ", (float*)&global->c_cross_hair);
