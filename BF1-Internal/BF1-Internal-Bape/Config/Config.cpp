@@ -2,6 +2,12 @@
 
 void Config::read() {
 
+	/* open the file with read & write mode. */
+	file.open(path);
+
+	/* parse file to json opject */
+	JSON = json::parse(file);
+
 	// Variables
 
 	/* vector for converting variable names into strings */
@@ -15,6 +21,7 @@ void Config::read() {
 
 	/* iterate over variable names */
 	int iter = 0;
+
 	for (std::string var : names) {
 		iter++;
 		/* read json via variable names*/
@@ -22,6 +29,9 @@ void Config::read() {
 	}
 
 	// Colors
+
+
+	file.close();
 
 }
 
@@ -40,6 +50,7 @@ void Config::write() {
 	}
 
 	int iter = 0;
+
 	for (std::string var : names) {
 		iter++;
 		/* write json via variable names*/
@@ -51,6 +62,8 @@ void Config::write() {
 		/* push variable name into vector */
 		namesColors.push_back(GET_VARIABLE_NAME(var));
 	}
+
+	iter = 0;
 
 	for (std::string var : namesColors) {
 		iter++;

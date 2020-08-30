@@ -7,11 +7,10 @@
 #include "../../Vendors/ImGui/imgui.h"
 #include "../../Global.hpp"
 #include "../../Config/Config.hpp"
+#include <thread>
 
 namespace Menu
 {
-	Config config;
-
 	int m_CurrentTab = 1;
 
 	void ApplyStyle() {
@@ -97,6 +96,8 @@ namespace Menu
 
 			ImGui::Separator();
 
+			Config config;
+
 			switch (m_CurrentTab) {
 			case 1: /* aimbot */
 				ImGui::Checkbox("Aimbot (M5)", &global->aim_enabled);
@@ -112,7 +113,8 @@ namespace Menu
 				break;
 			case 3: /* misc */
 				ImGui::Checkbox("Crosshair", &global->misc_crosshair);
-				//if (ImGui::Button("Save config")) config.write();
+				if (ImGui::Button("Save config")) config.write();/*std::thread configThread(&Config::write, Config())*/
+				break;
 			case 4: /* colors */
 				ImGui::ColorEdit4("Crosshair ", (float*)&global->c_cross_hair);
 				ImGui::ColorEdit4("Boxes team ", (float*)&global->c_t_visuals_box);

@@ -57,12 +57,6 @@ public:
 		/* get env variable and append it with bape.json */
 		auto appdataPath = getenv("appdata");
 		sprintf(path, "%s%s", appdataPath, "\\bape.json");
-
-		/* open the file with read & write mode. */
-		file.open(path);
-
-		/* parse file to json opject */
-		JSON = json::parse(file);
 	}
 
 	/* read/write config */

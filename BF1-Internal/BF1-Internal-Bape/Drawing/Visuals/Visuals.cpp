@@ -127,7 +127,7 @@ namespace Visual
 
 					if (!soldier->occluded) boxColor = global->c_e_visuals_box_visible;
 
-					draw->Rectangle(ImVec2(c1.x + 10, c1.y), ImVec2(c2.x - 10, c2.y), boxColor, 1.0f, 5.0f, NONE, OUTLINE | FILLED);
+					draw->Rectangle(ImVec2(c1.x + 10, c1.y), ImVec2(c2.x - 10, c2.y), boxColor, 1, 1.0f, NONE, NONE);
 				}
 
 				if (global->visuals_healthbar) { /* broken */
