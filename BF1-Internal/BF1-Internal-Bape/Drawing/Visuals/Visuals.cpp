@@ -106,7 +106,7 @@ namespace Visual
 					/* convert vec2 to imvec2 */
 					ImVec2 headpos(head_screen.x, head_screen.y);
 					/* draw a circle @ head position */
-					draw->Circle(headpos, 5, 5, global->c_visuals_headcircle);
+					draw->Circle(headpos, 4, 5, global->c_visuals_headcircle);
 				}
 
 				if (global->visuals_box) {
@@ -116,7 +116,7 @@ namespace Visual
 					W2S(soldier->location + Vec3(soldier->GetAABB().max.x, soldier->GetAABB().max.y, soldier->GetAABB().max.z), c2);
 
 					ImColor boxColor;
-					if (team) { 
+					if (!team) { 
 						boxColor = global->c_e_visuals_box;
 					}
 					else boxColor = global->c_t_visuals_box;
@@ -126,10 +126,10 @@ namespace Visual
 					draw->Rectangle(ImVec2(c1.x + 10, c1.y), ImVec2(c2.x - 10, c2.y), boxColor, 1.0f, 5.0f, NONE, NONE);
 				}
 
-				if (global->visuals_healthbar) {
+				if (global->visuals_healthbar) { /* broken */
 					Vec2 pos2D;
 					W2S(soldier->location, pos2D);
-					draw->HealthBar(ToImVec2(pos2D), 20, soldier->healthcomponent->m_Health, soldier->healthcomponent->m_MaxHealth);
+					draw->HealthBar(ToImVec2(pos2D), pos2D.y, soldier->healthcomponent->m_Health, soldier->healthcomponent->m_MaxHealth);
 				}
 
 				if (global->visuals_info) {

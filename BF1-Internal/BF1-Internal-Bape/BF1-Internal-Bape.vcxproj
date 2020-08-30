@@ -81,6 +81,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(ProjectDir)Vendors;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -152,6 +153,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Config\Config.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Drawing\Functions\Draw.cpp" />
     <ClCompile Include="Drawing\Menu\Menu.cpp" />
@@ -187,6 +189,7 @@
     <ClCompile Include="Vendors\MinHook\trampoline.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Config\Config.hpp" />
     <ClInclude Include="Drawing\Font.hpp" />
     <ClInclude Include="Drawing\Functions\Draw.hpp" />
     <ClInclude Include="Drawing\Menu\Menu.hpp" />
@@ -266,6 +269,43 @@
     <ClInclude Include="Vendors\MinHook\hde\table64.h" />
     <ClInclude Include="Vendors\MinHook\MinHook.h" />
     <ClInclude Include="Vendors\MinHook\trampoline.h" />
+    <ClInclude Include="Vendors\nlohmann\adl_serializer.hpp" />
+    <ClInclude Include="Vendors\nlohmann\byte_container_with_subtype.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\conversions\from_json.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\conversions\to_chars.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\conversions\to_json.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\exceptions.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\hash.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\input\binary_reader.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\input\input_adapters.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\input\json_sax.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\input\lexer.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\input\parser.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\input\position_t.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\iterators\internal_iterator.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\iterators\iteration_proxy.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\iterators\iterator_traits.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\iterators\iter_impl.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\iterators\json_reverse_iterator.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\iterators\primitive_iterator.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\json_pointer.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\json_ref.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\macro_scope.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\macro_unscope.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\meta\cpp_future.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\meta\detected.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\meta\is_sax.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\meta\type_traits.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\meta\void_t.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\output\binary_writer.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\output\output_adapters.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\output\serializer.hpp" />
+    <ClInclude Include="Vendors\nlohmann\detail\value_t.hpp" />
+    <ClInclude Include="Vendors\nlohmann\json.hpp" />
+    <ClInclude Include="Vendors\nlohmann\json_fwd.hpp" />
+    <ClInclude Include="Vendors\nlohmann\ordered_map.hpp" />
+    <ClInclude Include="Vendors\nlohmann\thirdparty\hedley\hedley.hpp" />
+    <ClInclude Include="Vendors\nlohmann\thirdparty\hedley\hedley_undef.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
