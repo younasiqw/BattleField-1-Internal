@@ -69,9 +69,6 @@ namespace Menu
 		/* Return if menu shouldn't be open */
 		if (!global->is_menu_open) return;
 
-		/* Show the cursor, this doesnt lock game mouse input but its better than nothing */
-		ShowCursor(true);
-
 		/* Apply style */
 		ApplyStyle();
 
@@ -79,7 +76,7 @@ namespace Menu
 		ImGui::Begin("Bape BF1 Internal", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
 
 		/* Set size and pos */
-		float menux = 555.f; float menuy = 200.f;
+		float menux = 529.f; float menuy = 200.f;
 		ImGui::SetWindowSize(ImVec2(menux, menuy), ImGuiCond_Once);
 		ImGui::SetWindowPos(ImVec2((ImGui::GetIO().DisplaySize.x / 2) - (menux / 2), (ImGui::GetIO().DisplaySize.y / 2) - (menuy / 2)), ImGuiCond_Once);
 
@@ -99,7 +96,7 @@ namespace Menu
 
 			switch (m_CurrentTab) {
 			case 1: /* aimbot */
-				ImGui::Checkbox("Aimbot", &global->aimbot);
+				ImGui::Checkbox("Aimbot (M5)", &global->aim_enabled);
 				break;
 			case 2: /* visuals */
 				ImGui::Checkbox("Visuals ", &global->visuals);
