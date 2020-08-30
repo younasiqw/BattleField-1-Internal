@@ -21,7 +21,8 @@ enum DrawFlags
 	OUTLINE = 1 << 1,
 	CENTERED = 1 << 2,
 	BOUNDS = 1 << 3,
-	NONE = 1 << 4
+	NONE = 1 << 4,
+	FILLED = 1 << 5
 };
 DEFINE_ENUM_FLAG_OPERATORS(DrawFlags);
 

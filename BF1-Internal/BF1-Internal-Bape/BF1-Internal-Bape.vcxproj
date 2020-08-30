@@ -153,7 +153,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Config\Config.cpp" />
+    <ClCompile Include="Aimbot\Aimbot.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Drawing\Functions\Draw.cpp" />
     <ClCompile Include="Drawing\Menu\Menu.cpp" />
@@ -189,7 +189,6 @@
     <ClCompile Include="Vendors\MinHook\trampoline.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Config\Config.hpp" />
     <ClInclude Include="Drawing\Font.hpp" />
     <ClInclude Include="Drawing\Functions\Draw.hpp" />
     <ClInclude Include="Drawing\Menu\Menu.hpp" />
