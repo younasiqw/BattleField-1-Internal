@@ -182,4 +182,17 @@ void Draw::HealthBar(ImVec2 pos, int h, float health, float mHealth) {
 		draw->Line(ImVec2(flX, flY + i * flHeight), ImVec2(flX + 4, flHeight), flY + i * flHeight, ImColor(0.0f, 0.0f, 0.0f, 1.0f), NONE);
 }
 
+void Draw::CornerRectangle(ImVec2 pt, ImVec2 pb, ImColor col, float length,int thickness,ImDrawCornerFlags corner_flags, DrawFlags flags) {
+	/* Check if the rect is within bounds of the render frame */
+	if ((pt.x <= 0.0 || pt.y <= 0.0) || (pt.x >= GetSystemMetrics(SM_CXSCREEN) || pt.y >= GetSystemMetrics(SM_CYSCREEN))
+		|| (pb.x <= 0.0 || pb.y <= 0.0) || (pb.x >= GetSystemMetrics(SM_CXSCREEN) || pb.y >= GetSystemMetrics(SM_CYSCREEN)))
+	{
+		if (flags & BOUNDS) return;
+	}
+
+	/* Get the ImGui window class */
+	ImGuiWindow* window = ImGui::GetCurrentWindow();
+
+}
+
 Draw* draw = new Draw;

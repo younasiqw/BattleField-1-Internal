@@ -84,12 +84,15 @@ namespace Aimbot
 
 				if (closest) {
 					/* Redo checks incase somehow in the time it takes to get here something changes */
+
 					/* Check that soldier is valid */
 					if (!IsValidPtr(closest)) continue;
 					/* Check that this player is valid */
 					if (closest->IsDead()) continue;
 					/* Check that the player is visible */
 					if (closest->IsVisible()) continue;
+					/* Check if player isnt occluded */
+					if (!closest->occluded) continue;
 
 					/* Do another head W2S, calculate differences, and move mouse */
 					Vec2 head_screen; if (!W2S(closest->location + Vec3(closest->GetAABB().max.x, closest->GetAABB().max.y, closest->GetAABB().max.z), head_screen)) continue;
@@ -102,10 +105,11 @@ namespace Aimbot
 						//movex < 0 ? movex = -1 : movex = 1;
 					//if ((int)movey != 0)
 						//movey < 0 ? movey = -1 : movey = 1;
-					mouse_event(1, (int)movex, (int)movey, 0, 0);
+					SetCursorPos(head_screen.x, head_screen.y);
 				}
 			}
 			Sleep(2);
 		}
+		Sleep(1); // Hot thread no no!
 	}
 }

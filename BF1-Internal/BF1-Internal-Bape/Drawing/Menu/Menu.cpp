@@ -101,6 +101,8 @@ namespace Menu
 			switch (m_CurrentTab) {
 			case 1: /* aimbot */
 				ImGui::Checkbox("Aimbot (M5)", &global->aim_enabled);
+				ImGui::SameLine();
+				ImGui::Text(" (Disable raw input)");
 				break;
 			case 2: /* visuals */
 				ImGui::Checkbox("Visuals ", &global->visuals);
@@ -116,11 +118,11 @@ namespace Menu
 				//if (ImGui::Button("Save config")) config.write();/*std::thread configThread(&Config::write, Config())*/
 				break;
 			case 4: /* colors */
-				ImGui::ColorEdit4("Crosshair ", (float*)&global->c_cross_hair);
-				ImGui::ColorEdit4("Boxes team ", (float*)&global->c_t_visuals_box);
-				ImGui::ColorEdit4("Boxes enemy ", (float*)&global->c_e_visuals_box);
-				ImGui::ColorEdit4("Boxes visible ", (float*)&global->c_e_visuals_box_visible);
-				ImGui::ColorEdit4("Skeleton ", (float*)&global->c_visuals_skeleton);
+				ImGui::ColorEdit4("Crosshair ", (float*)&global->c_cross_hair, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoAlpha | ImGuiColorEditFlags_NoTooltip);
+				ImGui::ColorEdit4("Boxes team ", (float*)&global->c_t_visuals_box, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoAlpha | ImGuiColorEditFlags_NoTooltip);
+				ImGui::ColorEdit4("Boxes enemy ", (float*)&global->c_e_visuals_box, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoAlpha | ImGuiColorEditFlags_NoTooltip);
+				ImGui::ColorEdit4("Boxes visible ", (float*)&global->c_e_visuals_box_visible, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoAlpha | ImGuiColorEditFlags_NoTooltip);
+				ImGui::ColorEdit4("Skeleton ", (float*)&global->c_visuals_skeleton, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoAlpha | ImGuiColorEditFlags_NoTooltip);
 				break;
 				
 			default: break;

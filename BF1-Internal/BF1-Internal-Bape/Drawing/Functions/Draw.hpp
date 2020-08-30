@@ -30,6 +30,7 @@ class Draw
 {
 public:
 	void Rectangle(ImVec2 pt, ImVec2 pb, ImColor col, int thickness, float rounding, ImDrawCornerFlags corner_flags, DrawFlags flags);
+	void CornerRectangle(ImVec2 pt, ImVec2 pb, ImColor col, float length, int thickness, ImDrawCornerFlags corner_flags, DrawFlags flags);
 	void CircleFilled(ImVec2 pos, ImColor col, int radius, int thickness, int segments, DrawFlags flags);
 	void Circle(ImVec2 pos, float points, float radius, ImColor color);
 	void Line(ImVec2 pt, ImVec2 pb, ImColor col, int thickness, DrawFlags flags);
