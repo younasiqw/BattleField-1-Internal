@@ -162,4 +162,19 @@ void Draw::Rectangle3D(Vec3 location, ImColor col) {
 	/* We need 3 vectors */
 }
 
+void Draw::HealthBar(ImVec2 pos, int h, float health, float mHealth) {
+	float flBoxes = std::ceil(health / 10.f);
+	float flX = pos.x - 7 - h / 4.f; float flY = pos.y - 1;
+	float flHeight = h / 10.f;
+	float flMultiplier = 12 / 360.f; flMultiplier *= flBoxes - 1;
+	ImColor ColHealth(0.0f, 1.0f, 0.0f);
+
+	draw->Rectangle(ImVec2(flX, flY), ImVec2(flX, h + 2), ImColor(0.8f, 0.8f, 0.8f, 0.5), 1.0f, 0, NONE, SOLID); /* background */
+	draw->Rectangle(ImVec2(flX, flY), ImVec2(flX, h + 2), ImColor(0.0f, 0.0f, 0.0f, 1.0f), 1.0f, 0, OUTLINE, SOLID); /* outline */
+	draw->Rectangle(ImVec2(flX + 1, flY), ImVec2(flX, flHeight * flBoxes + 1), ColHealth, 1.0f, 0.0f, NONE, SOLID); /* green health bar*/
+
+	for (int i = 0; i < 10; i++)
+		draw->Line(ImVec2(flX, flY + i * flHeight), ImVec2(flX + 4, flHeight), flY + i * flHeight, ImColor(0.0f, 0.0f, 0.0f, 1.0f), NONE);
+}
+
 Draw* draw = new Draw;

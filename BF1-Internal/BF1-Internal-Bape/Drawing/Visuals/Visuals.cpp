@@ -106,7 +106,7 @@ namespace Visual
 					/* convert vec2 to imvec2 */
 					ImVec2 headpos(head_screen.x, head_screen.y);
 					/* draw a circle @ head position */
-					draw->Circle(headpos, 1, 5, ImColor(1.0f, 0.0f, 0.0f));
+					draw->Circle(headpos, 5, 5, global->c_visuals_headcircle);
 				}
 
 				if (global->visuals_box) {
@@ -114,7 +114,22 @@ namespace Visual
 					Vec2 c1; Vec2 c2;
 					W2S(soldier->location + Vec3(soldier->GetAABB().min.x, soldier->GetAABB().min.y, soldier->GetAABB().max.z), c1);
 					W2S(soldier->location + Vec3(soldier->GetAABB().max.x, soldier->GetAABB().max.y, soldier->GetAABB().max.z), c2);
-					draw->Rectangle(ImVec2(c1.x + 10, c1.y), ImVec2(c2.x - 10, c2.y), ImColor(1.0f, 0.0f, 0.0f), 1.0f, 5.0f, NONE, NONE);
+
+					ImColor boxColor;
+					if (team) { 
+						boxColor = global->c_e_visuals_box;
+					}
+					else boxColor = global->c_t_visuals_box;
+
+					if (!soldier->occluded) boxColor = global->c_e_visuals_box_visible;
+
+					draw->Rectangle(ImVec2(c1.x + 10, c1.y), ImVec2(c2.x - 10, c2.y), boxColor, 1.0f, 5.0f, NONE, NONE);
+				}
+
+				if (global->visuals_healthbar) {
+					Vec2 pos2D;
+					W2S(soldier->location, pos2D);
+					draw->HealthBar(ToImVec2(pos2D), 20, soldier->healthcomponent->m_Health, soldier->healthcomponent->m_MaxHealth);
 				}
 
 				if (global->visuals_info) {
@@ -127,12 +142,12 @@ namespace Visual
 					/* Create the lower text */
 					sprintf(lower_buffer, "[%s]", player->name);
 
-					draw->Text(ToImVec2(base_screen), ImColor(1.0f, 0.0f, 0.0f), lower_buffer, CENTERED);
+					draw->Text(ToImVec2(base_screen), global->c_visuals_info, lower_buffer, CENTERED);
 				}
 
 				if (global->visuals_skeleton) {
 					/* draw skeleton */
-					DrawSkeleton(soldier, ImVec4(1.0f, 0.0f, 0.0f, 1.0f));
+					DrawSkeleton(soldier, global->c_visuals_skeleton);
 				}
 
 			}

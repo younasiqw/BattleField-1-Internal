@@ -79,7 +79,7 @@ namespace Menu
 		ImGui::Begin("Bape BF1 Internal", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
 
 		/* Set size and pos */
-		float menux = 400.f; float menuy = 200.f;
+		float menux = 555.f; float menuy = 200.f;
 		ImGui::SetWindowSize(ImVec2(menux, menuy), ImGuiCond_Once);
 		ImGui::SetWindowPos(ImVec2((ImGui::GetIO().DisplaySize.x / 2) - (menux / 2), (ImGui::GetIO().DisplaySize.y / 2) - (menuy / 2)), ImGuiCond_Once);
 
@@ -92,26 +92,35 @@ namespace Menu
 			if (ImGui::Button("Visuals", ImVec2(126, 25))) m_CurrentTab = 2;
 			ImGui::SameLine(0.0, 4.0f);
 			if (ImGui::Button("Misc.", ImVec2(126, 25))) m_CurrentTab = 3;
+			ImGui::SameLine(0.0, 4.0f);
+			if (ImGui::Button("Colors", ImVec2(126, 25))) m_CurrentTab = 4;
 
 			ImGui::Separator();
 
-			if (m_CurrentTab == 1)
-			{
-				
-			}
-			if (m_CurrentTab == 2)
-			{
+			switch (m_CurrentTab) {
+			case 1: /* aimbot */
+				ImGui::Checkbox("Aimbot", &global->aimbot);
+				break;
+			case 2: /* visuals */
 				ImGui::Checkbox("Visuals ", &global->visuals);
 				ImGui::Checkbox("Boxes ", &global->visuals_box);
 				ImGui::Checkbox("Head circle ", &global->visuals_headcircle);
 				ImGui::Checkbox("Player info ", &global->visuals_info);
 				ImGui::Checkbox("Enemy only ", &global->visuals_enemy_only);
 				ImGui::Checkbox("Skeleton ", &global->visuals_skeleton);
-
-			}
-			if (m_CurrentTab == 3)
-			{
+				ImGui::Checkbox("Health bar", &global->visuals_healthbar);
+				break;
+			case 3: /* misc */
 				ImGui::Checkbox("Crosshair", &global->misc_crosshair);
+			case 4: /* colors */
+				ImGui::ColorEdit4("Crosshair ", (float*)&global->c_cross_hair);
+				ImGui::ColorEdit4("Boxes team ", (float*)&global->c_t_visuals_box);
+				ImGui::ColorEdit4("Boxes enemy ", (float*)&global->c_e_visuals_box);
+				ImGui::ColorEdit4("Boxes visible ", (float*)&global->c_e_visuals_box_visible);
+				ImGui::ColorEdit4("Skeleton ", (float*)&global->c_visuals_skeleton);
+				break;
+				
+			default: break;
 			}
 		}
 

@@ -35,6 +35,7 @@ public:
 	void Text(ImVec2 pos, ImColor col, std::string str, DrawFlags flags);
 	void XCrossHair(ImColor col);
 	void Rectangle3D(Vec3 location, ImColor col);
+	void HealthBar(ImVec2 pos, int h, float health, float mHealth);
 };
 
 extern Draw* draw;
