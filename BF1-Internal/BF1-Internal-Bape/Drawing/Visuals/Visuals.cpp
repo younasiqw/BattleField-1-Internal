@@ -40,6 +40,10 @@ namespace Visual
 			/* Attempt to get the local player instance */
 			ClientPlayer* local_player = GetLocalPlayer();
 
+			if (!IsValidPtr(local_player)) return;
+
+
+
 			std::string name = local_player->name;
 
 			/* get localtime */
